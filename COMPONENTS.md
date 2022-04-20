@@ -46,9 +46,9 @@ const interviewers = [
 
 - State:
 - Props:
-  interviewers:array - an array of objects as seen above
-  setInterviewer:function - a function that accepts an interviewer id. This function will simply be passed down to the <InterviewerListItem>
-  interviewer:number - a number that represents the id of the currently selected interviewer
+  1. interviewers:array - an array of objects as seen above
+  2. setInterviewer:function - a function that accepts an interviewer id. This function will simply be passed down to the <InterviewerListItem>
+  3. interviewer:number - a number that represents the id of the currently selected  interviewer
 - Used by:
 
 ### InterviewerListItem
