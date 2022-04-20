@@ -14,8 +14,8 @@ const name = function () {
     <li onClick={() => props.setInterviewer(props.id)} className={listClass}>
       <img
         className="interviewers__item-image"
-        src="https://i.imgur.com/LpaY82x.png"
-        alt="Sylvia Palmer"
+        src={props.avatar}
+        alt={props.name}
       />
       {name()}
     </li>
