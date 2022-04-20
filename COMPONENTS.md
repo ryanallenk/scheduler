@@ -91,6 +91,10 @@ const interviewer = {
 
 - State:
 - Props:
+1. student:String eg. "Lydia Miller-Jones"
+2. interviewer:Object we can use the interview object that already exists in stories/index.js for this
+3. onEdit:Function to be called when the user clicks the Edit button
+4. onDelete:Function to be called when the user clicks the Delete button
 - Used by:
 
 ### Appointment/Form
