@@ -98,9 +98,23 @@ const interviewer = {
 - Used by:
 
 ### Appointment/Form
+The <Form> component will need to track the state of the two elements (the student's name (the text input field) as a string and the selected interviewer's ID as a number)
+
+It will use an <input /> element to accept the name of the student, and the <InterviewerListItem /> component to display the selected interviewer.
+
+When we create the appointment, the student will default to "". The interviewer state will default to null.
+If there is an interview booked, then the name of the student and the ID of the interviewer should be used to initialize these values.
 
 - State:
+student:String
+interviewer:Number
+
 - Props:
+student:String
+interviewers:Array
+interviewer:Number
+onSave:Function
+onCancel:Function
 - Used by:
 
 ### Appointment/Status
