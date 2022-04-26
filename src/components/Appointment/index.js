@@ -16,6 +16,13 @@ const {mode, transition, back} = useVisualMode (
   (props.interview) ? SHOW : EMPTY
 )
 
+function save(name, interviewer) {
+  const interview = {
+    student: name,
+    interviewer
+  };
+}
+
   return (
     <article className="appointment">
       <Header time={props.time}></Header>
@@ -27,8 +34,8 @@ const {mode, transition, back} = useVisualMode (
         />
       )}
       {mode === CREATE && (<Form
-      interviewers={[]}
-      onSave={() => {}}
+      interviewers={props.interviewers}
+      onSave={() => save()}
       onCancel={() => back()}
 
       />)}
