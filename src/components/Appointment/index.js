@@ -21,6 +21,8 @@ function save(name, interviewer) {
     student: name,
     interviewer
   };
+  props.book(props.id, interview);
+  transition(SHOW);
 }
 
   return (
@@ -35,7 +37,7 @@ function save(name, interviewer) {
       )}
       {mode === CREATE && (<Form
       interviewers={props.interviewers}
-      onSave={() => save()}
+      onSave={save}
       onCancel={() => back()}
 
       />)}
