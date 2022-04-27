@@ -18,6 +18,12 @@ const {mode, transition, back} = useVisualMode (
   (props.interview) ? SHOW : EMPTY
 )
 
+function deleteAppt () {
+  props.onDelete(props.id);
+  transition(EMPTY);
+}
+
+
 function save(name, interviewer) {
   const interview = {
     student: name,
@@ -37,6 +43,7 @@ function save(name, interviewer) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={deleteAppt}
         />
       )}
       {mode === CREATE && (<Form

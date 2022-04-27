@@ -54,7 +54,20 @@ export default function Application(props) {
     return setAppointment;
   }
 
-  
+  function deleteInterview (id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    }
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    setState({
+      ...state,
+      appointments
+    })
+  }
   
   
   const dailyAppointments = getAppointmentsForDay({appointments: state.appointments, days: state.days}, state.day);
@@ -68,6 +81,7 @@ export default function Application(props) {
         {...appointment}
         interview={interview}
         book={bookInterview}
+        onDelete={deleteInterview}
         interviewers={interviewers}
       />
     )
