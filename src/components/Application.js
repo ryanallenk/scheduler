@@ -48,9 +48,7 @@ export default function Application(props) {
       ...state,
       appointments
     }))
-    .catch((error) => {
-      console.log(error)
-    })
+
     return setAppointment;
   }
 
