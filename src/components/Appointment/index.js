@@ -5,6 +5,7 @@ import Empty from './Empty'
 import Form from './Form'
 import Status from './Status'
 import Confirm from './Confirm'
+import Error from './Error'
 import useVisualMode from 'hooks/useVisualMode'
 
 import "components/Appointment/styles.scss"
@@ -29,11 +30,11 @@ function confirm () {
 }
 
 function deleteAppt () {
-  transition(DELETING)
+  transition(DELETING, true)
   props
   .onDelete(props.id)
   .then(() => transition(EMPTY))
-  .catch(error => transition(ERROR_DELETE));
+  .catch(error => transition(ERROR_DELETE, true));
 }
 
 function edit () {
@@ -51,7 +52,7 @@ function save(name, interviewer) {
   props
   .book(props.id, interview)
   .then(() => transition(SHOW))
-  .catch(error => transition(ERROR_SAVE));
+  .catch(error => transition(ERROR_SAVE, true));
 }
 
   return (
@@ -86,6 +87,8 @@ function save(name, interviewer) {
       onSave={save}
       />}
       {mode === DELETING && <Status message={"Deleting"} />}
+      {mode === ERROR_SAVE && <Error message={"Unable to save the appointment."} onClose={back} />}
+      {mode === ERROR_DELETE && <Error message={"Unable to delete the appointment."} onClose={back}/>}
       
     </article>
   )

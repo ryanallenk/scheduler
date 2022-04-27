@@ -5,7 +5,9 @@ const [mode, setMode] = useState(initial);
 const [history, setHistory] = useState([initial]);
 
   function transition(newMode, replace = false) {
-    replace && history.pop()
+    if(replace){
+      history.pop()
+    }
     setMode(newMode);
     setHistory(prev => ([...prev, newMode]));
   }
