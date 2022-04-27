@@ -4,6 +4,7 @@ import Show from './Show'
 import Empty from './Empty'
 import Form from './Form'
 import Status from './Status'
+import Confirm from './Confirm'
 import useVisualMode from 'hooks/useVisualMode'
 
 import "components/Appointment/styles.scss"
@@ -12,11 +13,16 @@ const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
+const CONFIRM = "CONFIRM";
 
 export default function Appointment (props) {
 const {mode, transition, back} = useVisualMode (
   (props.interview) ? SHOW : EMPTY
 )
+
+function confirm () {
+  transition(CONFIRM);
+}
 
 function deleteAppt () {
   props.onDelete(props.id);
@@ -43,16 +49,21 @@ function save(name, interviewer) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
-          onDelete={deleteAppt}
+          onDelete={confirm}
         />
       )}
       {mode === CREATE && (<Form
       interviewers={props.interviewers}
       onSave={save}
-      onCancel={() => back()}
+      onCancel={back}
 
       />)}
       {mode === SAVING && <Status/>}
+      {mode === CONFIRM && <Confirm 
+      onCancel={back}
+      onConfirm={deleteAppt}
+      message={"Are you sure you would like to delete?"}
+      />}
       
     </article>
   )
