@@ -3,6 +3,7 @@ import InterviewerList from "components/InterviewerList";
 import Button from "components/Button";
 
 export default function Form(props) {
+  //props are not destructured, passed from Index.js and include interviewers (array), interviewer (id), student, onCancel (function), onSave (function)
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");

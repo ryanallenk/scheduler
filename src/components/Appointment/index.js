@@ -21,10 +21,13 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment (props) {
+// props are not destructured here, but they include key(id), interview, book (action to book an interview), onDelete, and interviewers
+
 const {mode, transition, back} = useVisualMode (
   (props.interview) ? SHOW : EMPTY
 )
 
+// helper functions which call visualMode and certain props to pass up the state
 function confirm () {
   transition(CONFIRM);
 }
@@ -40,7 +43,6 @@ function deleteAppt () {
 function edit () {
   transition(EDIT)
 }
-
 
 function save(name, interviewer) {
   const interview = {

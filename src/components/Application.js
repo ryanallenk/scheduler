@@ -11,14 +11,16 @@ import useApplicationData from "hooks/useApplicationData.js"
 
 
 export default function Application(props) {
+  // import custom hook
   const { deleteInterview, bookInterview, setDay, state } = useApplicationData();
   
-  
+  // create my array of daily appointments
   const dailyAppointments = getAppointmentsForDay({appointments: state.appointments, days: state.days}, state.day);
-
+  // map my array by adding the interview and interviewers data for each day
   const appointmentItems = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview)
       const interviewers = getInterviewersForDay(state, state.day)
+    // return the JSX to build each appointment
     return (
       <Appointment
         key={appointment.id}
