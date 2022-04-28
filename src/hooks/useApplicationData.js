@@ -74,7 +74,6 @@ const countSpots = (state, dayToUpdate) => {
 
       if (`${appointment[key]}` === "null") {
         count ++
-        // console.log("number of spots:", count)
       }
     }
   })
